@@ -21,9 +21,6 @@ describe("Main", function() {
     // create a sandbox
     sandbox = sinon.sandbox.create();
 
-    // stub some console methods
-    sandbox.stub(console, "log");
-    sandbox.stub(console, "error");
   });
 
   afterEach(function() {
@@ -33,11 +30,21 @@ describe("Main", function() {
 
   describe('#numberOfChirps', function () {
     it("should be a function", function() {
-      (typeof GLOBAL.chirp).should.equal("function");
+      (typeof GLOBAL.numberOfChirps).should.equal("function");
     });
 
-    it("should return chirp based on the input", function() {
+    it("should return numberOfChirps based on input", function() {
+      var chirpNum = GLOBAL.numberOfChirps(5);
+      expect(chirpNum).to.be.a("string");
+      expect(chirpNum).to.equal("chirp chirp chirp chirp chirp");
 
+      chirpNum = GLOBAL.numberOfChirps(3);
+      expect(chirpNum).to.be.a("string");
+      expect(chirpNum).to.equal("chirp chirp chirp");
+
+      chirpNum = GLOBAL.numberOfChirps(3.14);
+      expect(chirpNum).to.be.a("string");
+      expect(chirpNum).to.equal("Please enter a positive integer");
     });
 
   });

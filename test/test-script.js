@@ -7,7 +7,7 @@ if (window) {
   var vm = require('vm');
   var sinon = require('sinon');
   var chai = require('chai');
-  var functionsFile = fs.readFileSync(process.cwd() + '/functions.js');
+  var functionsFile = fs.readFileSync(process.cwd() + '/chirp.js');
   vm.runInThisContext(functionsFile); // file runs and it's contents has access to GLOBAL
 }
 
